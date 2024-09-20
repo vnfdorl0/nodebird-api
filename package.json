@@ -4,7 +4,7 @@
     "description": "NodeBird API 서버",
     "main": "app.js",
     "scripts": {
-        "start": "nodemone app",
+        "start": "nodemon app",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "영",

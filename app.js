@@ -1,8 +1,8 @@
 const express = require('express'); // Express 웹 프레임워크 불러오기
 const path = require('path'); // path 모듈: 파일 및 디렉처리 경로 처리
 const cookieParser = require('cookie-parser'); // cookie-parser 미들웨어: 쿠키 파싱
-const passport = require('passport');
-const morgan = require('morgan');
+const passport = require('passport'); // Passport 라이브러리: 인증
+const morgan = require('morgan'); // Morgan 미들웨어: HTTP 요청 로깅
 const session = require('express-session'); // express-session 미들웨어: 세션 관리
 const nunjucks = require('nunjucks'); // Nunjucks: 템플릿 엔진
 const dotenv = require('dotenv'); // dotenv: .env파일(환경변수)
@@ -18,7 +18,7 @@ const app = express(); // Express 애플리케이션 인스턴스 생성
 passportConfig(); // Passport 설정을 실행하여 초기화
 app.set('port', process.env.PORT || 8002); // 서버가 사용할 포트를 설정, 환경 변수 PORT가 없으면 기본값 8002 사용
 app.set('view engine', 'html'); // Nunjucks를 사용하여 HTML 템플릿을 렌더링하도록 설정
-nunducks.configure('views', {
+nunjucks.configure('views', {
     express: app, // Express 애플리케이션과 연동
     watch: true, // 템플릿 파일이 변경될 때 자동으로 다시 로드하도록 설정
 }); // Nunjucks 템플릿 엔진 설정

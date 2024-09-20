@@ -13,7 +13,7 @@ class User extends Sequelize.Model{ // User 모델 정의
                 allowNull: false, // null 값 허용 X
             },
             password: { // 비밀번호 필드
-                type: Sequelize.STRING(100), // 최대 100자의 문자영 타입
+                type: Sequelize.STRING(100), // 최대 100자의 문자열 타입
                 allowNull: true, // null 값 허용 X
             },
             provider: { // provider 필드
