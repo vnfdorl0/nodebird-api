@@ -9,6 +9,7 @@ const dotenv = require('dotenv'); // dotenv: .env파일(환경변수)
 
 dotenv.config(); // .env 파일의 환경 변수를 불러와 process.env에 설정
 
+const v1 = require('./routes/v1'); // v1 API 라우터 불러오기
 const authRouter = require('./routes/auth'); // 인증 관련 라우터 모듈
 const indexRouter = require('./routes'); // 메인 인뎃스 라우터 모듈
 const { sequelize } = require('./models'); // Sequelize ORM을 통해 데이터베이스 모델
@@ -47,6 +48,7 @@ app.use(session({
 app.use(passport.initialize()); // Passport 초기화 수행
 app.use(passport.session()); // Passport가 세션을 사용할 수 있도록 설정
 
+app.use('/v1', v1); // '/v1' 경로에 대해 v1 라우터를 사용
 app.use('/auth', authRouter); // '/auth' 경로에 대해 authRouter를 사용하여 인증 관련 라우터 처리
 app.use('/', indexRouter); // 루트 경로 '/'에 대해 indexRouter를 사용하여 기본 라우트 처리
 
@@ -64,5 +66,5 @@ app.use((err, req, res, next) => {
 }); // 에러를 처리하기 위한 미들웨어 설정
 
 app.listen(app.get('port'), () => {
-    console.log(app.get('port'), '빈 포드에서 대기 중'); // 서버가 시작되면 콘송에 메시지 출력
+    console.log(app.get('port'), '빈 포드에서 대기 중'); // 서버가 시작되면 콘솔에 메시지 출력
 }); // 설정된 포트에서 서버를 시작하여 요청 대기
