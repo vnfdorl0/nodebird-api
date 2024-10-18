@@ -5,7 +5,7 @@ exports.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) { // 사용자가 인증된 상태인지 확인
         // Passport -> res객체에 isAuthenticated 메서드 추가
         // 로그인 중이면 req.isAuthenicated()가 True, 그렇지 않으면 False
-        next(); // 인증된 상태이면 다름 미들웨어로 이동
+        next(); // 인증된 상태이면 다음 미들웨어로 이동
     } else {
         res.status(403).send('로그인 필요');
         // 인증되지 않은 상태이면 403 상태 코드와 함께 '로그인 필요' 메시지 전송
@@ -22,10 +22,10 @@ exports.isNotLoggedIn = (req, res, next) => {
     }
 };
 
-// JWT 토컨을 검증하는 미들웨어
+// JWT 토큰을 검증하는 미들웨어
 exports.verifyToken = (req, res, next) => {
     try {
-        // Authorization 헤더의 토큰을 검증하여 decoded 객테를 생성하고 이를 res.locals에 정장
+        // Authorization 헤더의 토큰을 검증하여 decoded 객체를 생성하고 이를 res.locals에 저장
         // 요청 헤더에 저장된 토큰(req.headers.authorization) 사용 -> 사용자가 쿠키처럼 헤더에 토근을 넣어 전송
         // jwt.verify 메서드 -> 토큰 검증, 첫번째 인수(토큰), 두번째 인수(토큰의 비밀 키)
         res.locals.decoded = jwt.verify(req.headers.quthorization, process.env.JWT_SECRET);

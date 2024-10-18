@@ -10,15 +10,15 @@ const dotenv = require('dotenv'); // dotenv: .env파일(환경변수)
 dotenv.config(); // .env 파일의 환경 변수를 불러와 process.env에 설정
 
 const v1 = require('./routes/v1'); // v1 API 라우터 불러오기
-const authRouter = require('./routes/auth'); // 인증 관련 라우터 모듈
-const indexRouter = require('./routes'); // 메인 인뎃스 라우터 모듈
+const authRouter = require('./routes/auth'); // 인증 관련 라우터 모듈 불러오기
+const indexRouter = require('./routes'); // 메인 인덱스 라우터 모듈 불러오기
 const { sequelize } = require('./models'); // Sequelize ORM을 통해 데이터베이스 모델
-const passportConfig = require('./passport'); // Passport 설정 파일
+const passportConfig = require('./passport'); // Passport 설정 파일 불러오기
 
 const app = express(); // Express 애플리케이션 인스턴스 생성
 passportConfig(); // Passport 설정을 실행하여 초기화
 app.set('port', process.env.PORT || 8002); // 서버가 사용할 포트를 설정, 환경 변수 PORT가 없으면 기본값 8002 사용
-app.set('view engine', 'html'); // Nunjucks를 사용하여 HTML 템플릿을 렌더링하도록 설정
+app.set('view engine', 'html'); // Nunjucks템플릿 엔진을 HTML 렌더링하도록 설정
 nunjucks.configure('views', {
     express: app, // Express 애플리케이션과 연동
     watch: true, // 템플릿 파일이 변경될 때 자동으로 다시 로드하도록 설정

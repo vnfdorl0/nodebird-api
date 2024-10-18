@@ -26,4 +26,4 @@ class Hashtag extends Sequelize.Model { // Hashtag 모델을 정의하는 클래
     } 
 };
 
-module.exports = Hashtag; // Hashtah 모델을 모듈로 내보냄
+module.exports = Hashtag; // Hashtag 모델을 모듈로 내보냄
